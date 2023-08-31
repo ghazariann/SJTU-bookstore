@@ -26,6 +26,9 @@ public class UserAuth {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private Boolean disabled;
+
     @OneToOne
     @JsonIgnore  // Ignore this field when converting to JSON
     @JoinColumn(name = "user_id", nullable = false, unique = true)

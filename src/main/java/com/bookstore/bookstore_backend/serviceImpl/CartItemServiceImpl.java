@@ -1,7 +1,9 @@
 package com.bookstore.bookstore_backend.serviceImpl;
 
+import com.bookstore.bookstore_backend.dao.BookDao;
 import com.bookstore.bookstore_backend.entity.CartItem;
 import com.bookstore.bookstore_backend.repository.CartItemRepository;
+import com.bookstore.bookstore_backend.dao.CartItemDao;
 import com.bookstore.bookstore_backend.service.CartItemService;
 
 import lombok.AllArgsConstructor;
@@ -14,37 +16,39 @@ import java.util.Optional;
 @AllArgsConstructor
 
 public class CartItemServiceImpl implements CartItemService{
-    
-    private CartItemRepository cartRepository;
+
+    private final CartItemDao cartitemDao;
+//    private CartItemRepository cartRepository;
 
     @Override
     public CartItem addCart(CartItem cartItem) {
-        return cartRepository.save(cartItem);
+        return cartitemDao.save(cartItem);
     }
 
     @Override
     public CartItem getCartById(long id) {
-        Optional<CartItem> optionalCart = cartRepository.findById(id);
+        Optional<CartItem> optionalCart = Optional.ofNullable(cartitemDao.findById(id));
         return optionalCart.get();
     }
 
     @Override
     public List<CartItem> listCarts() {
-        return cartRepository.findAll();
+        return cartitemDao.findAll();
     }
 
     @Override
     public CartItem updateCart(CartItem cartItem) {
-        CartItem existingCartItem = cartRepository.findById(cartItem.getId()).get();
+        CartItem existingCartItem = cartitemDao.findById(cartItem.getId()); // err
+
         existingCartItem.setId(cartItem.getId() != 0 ? cartItem.getId() : existingCartItem.getId());
         existingCartItem.setQuantity(cartItem.getQuantity() != 0 ? cartItem.getQuantity() : existingCartItem.getQuantity());
 
-        return cartRepository.save(existingCartItem);
+        return cartitemDao.save(existingCartItem);
     }
 
     @Override
     public void deleteCart(long id) {
-        cartRepository.deleteById(id);
+        cartitemDao.deleteById(id);
     }
 
 }

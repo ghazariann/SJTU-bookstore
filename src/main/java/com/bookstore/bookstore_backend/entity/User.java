@@ -32,6 +32,11 @@ public class User {
     @Column()
     private String telephone;
 
+    @Column
+    private int type;
+
+
+
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 //    @JoinColumn(name = "auth_id", referencedColumnName = "id")
     private UserAuth userAuth;
