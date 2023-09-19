@@ -77,10 +77,10 @@ CREATE TABLE `order_items` (
 );
 
 
-use mybookstore;
-DROP TABLE IF EXISTS order_items;
-DROP TABLE IF EXISTS orders;
-DROP TABLE IF EXISTS cart_items;
-DROP TABLE IF EXISTS user_auth;
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS books;
+-- use mybookstore;
+-- DROP TABLE IF EXISTS order_items;
+-- DROP TABLE IF EXISTS orders;
+-- DROP TABLE IF EXISTS cart_items;
+-- DROP TABLE IF EXISTS user_auth;
+-- DROP TABLE IF EXISTS users;
+-- DROP TABLE IF EXISTS books;
