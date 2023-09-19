@@ -1,0 +1,16 @@
+.no-permission {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.no-permission h2 {
+    color: red;
+    font-size: 2em;
+}
+
+.no-permission p {
+    font-size: 1.2em;
+}

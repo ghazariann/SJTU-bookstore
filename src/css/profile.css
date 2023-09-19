@@ -1,0 +1,54 @@
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 30px;
+  background-color: white; 
+}
+
+.form-header {
+  font-size: 40px; /* Increased size */
+  margin-bottom: 30px;
+}
+
+.form-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px; /* More spacing */
+  width: 100%;
+  border-bottom: 1px solid #ccc; /* Added border */
+  padding: 20px 0; /* More padding */
+}
+
+.form-field label {
+  width: 20%;
+  font-size: 25px; /* Increased size */
+}
+
+.form-field div {
+  width: 60%;
+  font-size: 23px; /* Increased size */
+}
+
+.change-btn {
+  background-color: #FFA500;
+  color: white;
+  margin-left: 10px;
+}
+
+.save-btn {
+  background-color: #FF8C00;
+  color: white;
+  margin-top: 20px;
+}
+
+.discard-btn {
+  background-color: #D3D3D3;
+  color: white;
+  margin-top: 10px;
+}
+
+.change-btn:hover, .save-btn:hover, .discard-btn:hover {
+  opacity: 0.8;
+}

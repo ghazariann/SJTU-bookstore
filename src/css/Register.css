@@ -1,0 +1,13 @@
+.register {
+    margin: 2em auto;
+    width: 50%;
+}
+
+.register .ant-form-item {
+    margin-bottom: 1em;
+}
+
+.register .ant-form-item-control-input {
+    display: flex;
+    align-items: center;
+}

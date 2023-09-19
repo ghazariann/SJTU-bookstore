@@ -1,0 +1,28 @@
+.book-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.cover-image img {
+    width: 150px;
+    height: 225px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.book-info h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.book-info .author {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.book-info .description {
+    font-size: 14px;
+    margin: 10px 0;
+}
