@@ -23,7 +23,7 @@ public class OrderItem {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    @JsonIgnore  // Ignore this field when converting to JSON
+    @JsonIgnore // Ignore this field when converting to JSON
     private Order order;
 
     @Column()
@@ -31,5 +31,11 @@ public class OrderItem {
 
     @Column()
     private Double price;
+
+    @Override
+    public String toString() {
+        return "{id=" + String.valueOf(id) + ", book=" + book.toString() + ", quantity=" + quantity + ", price=" + price
+                + "}";
+    }
 
 }

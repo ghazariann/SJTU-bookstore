@@ -13,19 +13,19 @@ import lombok.Setter;
 @Entity
 @Table(name = "Books")
 public class Book {
-    
-    @Id
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-    @Column(name = "name")
+	@Column(name = "name")
 	private String name;
 
-    @Column(name = "type")
+	@Column(name = "type")
 	private String type;
 
 	@Column(name = "author")
-    private String author;
+	private String author;
 
 	@Column(name = "price")
 	private float price;
@@ -39,4 +39,8 @@ public class Book {
 	@Column(name = "image")
 	private String image;
 
+	@Override
+	public String toString() {
+		return "{id=" + String.valueOf(id) + "}";
+	}
 }

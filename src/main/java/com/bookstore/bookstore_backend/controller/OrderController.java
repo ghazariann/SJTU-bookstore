@@ -4,12 +4,14 @@ import com.bookstore.bookstore_backend.entity.Order;
 import com.bookstore.bookstore_backend.service.OrderService;
 
 import lombok.AllArgsConstructor;
+import com.bookstore.bookstore_backend.kafka.KafkaProducer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.logging.Logger;
 import java.util.List;
-
 
 @RestController
 @AllArgsConstructor
@@ -17,12 +19,16 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 public class OrderController {
 
+    @Autowired
     private OrderService orderService;
+    @Autowired
+    private KafkaProducer kafkaProducer;
 
     @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
-        Order newOrder = orderService.addOrder(order);
-        return new ResponseEntity<>(newOrder, HttpStatus.CREATED);
+    public ResponseEntity<String> createOrder(@RequestBody Order order) {
+        kafkaProducer.sendOrder(order); // Send order to kafka topic
+        return new ResponseEntity<>("Order sent for processing", HttpStatus.CREATED);
+        // todo ResponseEntity.ok("Message sent to kafka topic");
     }
 
     @GetMapping("/{id}")

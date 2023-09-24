@@ -10,7 +10,6 @@ import lombok.Setter;
 
 import java.util.List;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -35,15 +34,20 @@ public class User {
     @Column
     private int type;
 
-
+    // toString
+    @Override
+    public String toString() {
+        return "{id=" + id + "}";
+    }
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-//    @JoinColumn(name = "auth_id", referencedColumnName = "id")
+    // @JoinColumn(name = "auth_id", referencedColumnName = "id")
     private UserAuth userAuth;
 
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//    private List<Order> orders;
+    // @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    // private List<Order> orders;
 
-//    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<CartItem> cartItems;
+    // @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, fetch =
+    // FetchType.LAZY)
+    // private List<CartItem> cartItems;
 }
