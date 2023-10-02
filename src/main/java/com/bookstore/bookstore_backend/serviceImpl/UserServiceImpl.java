@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User addUser(User user) {
         UserAuth userAuth = user.getUserAuth();
-        if(userAuth == null){
+        if (userAuth == null) {
             throw new IllegalArgumentException("UserAuth cannot be null when creating a User");
         }
         userAuth.setUser(user);
@@ -41,12 +41,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public User updateUser(User user) {
         User existingUser = userRepository.findById(user.getId()).get();
-        UserAuth  userAuth= user.getUserAuth();
+        UserAuth userAuth = user.getUserAuth();
         UserAuth existingUserAuth = existingUser.getUserAuth();
-        if(userAuth != null) {
+        if (userAuth != null) {
             existingUserAuth.setEmail(userAuth.getEmail() != null ? userAuth.getEmail() : existingUserAuth.getEmail());
-            existingUserAuth.setPassword(userAuth.getPassword() != null ? userAuth.getPassword() : existingUserAuth.getPassword());
-            existingUserAuth.setDisabled(userAuth.getDisabled() != null ? userAuth.getDisabled() : existingUserAuth.getDisabled());
+            existingUserAuth.setPassword(
+                    userAuth.getPassword() != null ? userAuth.getPassword() : existingUserAuth.getPassword());
+            existingUserAuth.setDisabled(
+                    userAuth.getDisabled() != null ? userAuth.getDisabled() : existingUserAuth.getDisabled());
         }
         existingUser.setId(user.getId() != 0 ? user.getId() : existingUser.getId());
         existingUser.setName(user.getName() != null ? user.getName() : existingUser.getName());

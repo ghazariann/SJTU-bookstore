@@ -2,21 +2,19 @@ package com.bookstore.bookstore_backend.daoImpl;
 
 import com.bookstore.bookstore_backend.entity.CartItem;
 import com.bookstore.bookstore_backend.repository.CartItemRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import lombok.AllArgsConstructor;
+
 import org.springframework.stereotype.Repository;
 import com.bookstore.bookstore_backend.dao.CartItemDao;
 
 import java.util.List;
 
 @Repository
+@AllArgsConstructor
 public class CartItemDaoImpl implements CartItemDao {
 
     private final CartItemRepository cartItemRepository;
-
-    @Autowired
-    public CartItemDaoImpl(CartItemRepository cartItemRepository) {
-        this.cartItemRepository = cartItemRepository;
-    }
 
     @Override
     public CartItem save(CartItem cartItem) {

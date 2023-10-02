@@ -5,7 +5,6 @@ import com.bookstore.bookstore_backend.entity.UserAuth;
 import com.bookstore.bookstore_backend.service.TimerService;
 import com.bookstore.bookstore_backend.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +17,8 @@ import jakarta.servlet.http.HttpSession;
 @RestController
 @AllArgsConstructor
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
-// @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class AuthController {
-    @Autowired
     private UserService userService;
-    @Autowired
     private TimerService timerService;
 
     @PostMapping("/login")

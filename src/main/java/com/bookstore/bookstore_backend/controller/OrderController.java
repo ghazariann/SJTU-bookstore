@@ -5,12 +5,9 @@ import com.bookstore.bookstore_backend.service.OrderService;
 
 import lombok.AllArgsConstructor;
 import com.bookstore.bookstore_backend.kafka.KafkaProducer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
-import java.util.logging.Logger;
 import java.util.List;
 
 @RestController
@@ -19,9 +16,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 public class OrderController {
 
-    @Autowired
     private OrderService orderService;
-    @Autowired
     private KafkaProducer kafkaProducer;
 
     @PostMapping

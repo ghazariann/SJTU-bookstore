@@ -2,7 +2,6 @@ package com.bookstore.bookstore_backend.daoImpl;
 
 import com.bookstore.bookstore_backend.entity.OrderItem;
 import com.bookstore.bookstore_backend.repository.OrderItemRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.bookstore.bookstore_backend.dao.OrderItemDao;
 
@@ -13,7 +12,6 @@ public class OrderItemDaoImpl implements OrderItemDao {
 
     private final OrderItemRepository orderItemRepository;
 
-    @Autowired
     public OrderItemDaoImpl(OrderItemRepository orderItemRepository) {
         this.orderItemRepository = orderItemRepository;
     }

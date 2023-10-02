@@ -2,21 +2,19 @@ package com.bookstore.bookstore_backend.daoImpl;
 
 import com.bookstore.bookstore_backend.entity.User;
 import com.bookstore.bookstore_backend.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import lombok.AllArgsConstructor;
+
 import org.springframework.stereotype.Repository;
 import com.bookstore.bookstore_backend.dao.UserDao;
 
 import java.util.List;
 
 @Repository
+@AllArgsConstructor
 public class UserDaoImpl implements UserDao {
 
     private final UserRepository userRepository;
-
-    @Autowired
-    public UserDaoImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     @Override
     public User save(User user) {

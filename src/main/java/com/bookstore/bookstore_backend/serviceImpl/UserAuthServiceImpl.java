@@ -5,7 +5,6 @@ import com.bookstore.bookstore_backend.repository.UserAuthRepository;
 import com.bookstore.bookstore_backend.service.UserAuthService;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -15,11 +14,6 @@ import java.util.Optional;
 public class UserAuthServiceImpl implements UserAuthService {
 
     private final UserAuthRepository userAuthRepository;
-
-//    @Autowired
-//    public UserAuthService(UserAuthRepository userAuthRepository) {
-//        this.userAuthRepository = userAuthRepository;
-//    }
 
     @Override
     public UserAuth addUserAuth(UserAuth userAuth) {
@@ -43,7 +37,8 @@ public class UserAuthServiceImpl implements UserAuthService {
 
         existingUserAuth.setId(userAuth.getId() != 0 ? userAuth.getId() : existingUserAuth.getId());
         existingUserAuth.setEmail(userAuth.getEmail() != null ? userAuth.getEmail() : existingUserAuth.getEmail());
-        existingUserAuth.setPassword(userAuth.getPassword() != null ? userAuth.getPassword() : existingUserAuth.getPassword());
+        existingUserAuth
+                .setPassword(userAuth.getPassword() != null ? userAuth.getPassword() : existingUserAuth.getPassword());
         return userAuthRepository.save(existingUserAuth);
     }
 

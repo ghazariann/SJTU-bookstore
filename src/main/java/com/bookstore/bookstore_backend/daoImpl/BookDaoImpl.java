@@ -2,21 +2,19 @@ package com.bookstore.bookstore_backend.daoImpl;
 
 import com.bookstore.bookstore_backend.entity.Book;
 import com.bookstore.bookstore_backend.repository.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import lombok.AllArgsConstructor;
+
 import org.springframework.stereotype.Repository;
 import com.bookstore.bookstore_backend.dao.BookDao;
 
 import java.util.List;
 
 @Repository
+@AllArgsConstructor
 public class BookDaoImpl implements BookDao {
 
     private final BookRepository bookRepository;
-
-    @Autowired
-    public BookDaoImpl(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
 
     @Override
     public Book save(Book book) {
