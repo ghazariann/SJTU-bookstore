@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "latest",
+    "@stomp/stompjs": "^7.0.0",
     "antd": "^3.24.3",
+    "axios": "^1.5.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-app-rewired": "^2.1.5",
@@ -15,7 +17,9 @@
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
     "redux": "^4.0.4",
-    "web-vitals": "^2.1.4"
+    "sockjs-client": "^1.6.1",
+    "web-vitals": "^2.1.4",
+    "websocket": "^1.0.34"
   },
   "scripts": {
     "start": "react-scripts start",

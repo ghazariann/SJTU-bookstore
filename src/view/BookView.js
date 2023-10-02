@@ -16,7 +16,6 @@ function BookView() {
     const { user, setUser } = useContext(UserContext);
    
     const handleAddToCart = async () => {
-        console.log('ADD TO CART')
        
         const data = {
             book: {
@@ -33,19 +32,18 @@ function BookView() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         };
-        console.log(data)
+        // console.log(data)
         await fetch('http://localhost:8080/cartItems', requestOptions);
         navigate('/cart');
     };
    
     useEffect(() => {
-        console.log("Fetch book");
         const fetchBook = async () => {
 
             const bookId = new URLSearchParams(location.search).get("id");
             const response = await fetch(`http://localhost:8080/books/${bookId}`);
             const data = await response.json();
-            console.log(response)
+            // console.log(response)
             setBook(data);
 
         };

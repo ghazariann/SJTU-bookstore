@@ -25,7 +25,7 @@ export function BookList() {
                 dataSource={filteredBooks}
                 pagination={{
                     onChange: function(page) {
-                        console.log(page);
+                        // console.log(page);
                     },
                     pageSize: 16,
                 }}

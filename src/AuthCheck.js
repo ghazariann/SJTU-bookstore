@@ -9,7 +9,7 @@ export default function AuthCheck({ children }) {
   const location = useLocation();
 
   useEffect(() => {
-    console.log('user', user);
+    // console.log('user', user);
 
     // if there is no user, redirect to login
     if (!user) {

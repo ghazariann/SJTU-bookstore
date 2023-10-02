@@ -87,7 +87,7 @@ function BooksTable() {
     setEditingId(record.id);
   };
   const handleSave = (id) => {
-    console.log(tempBookData);
+    // console.log(tempBookData);
     fetch(`http://localhost:8080/books/${id}`, {
       method: 'PUT',
       headers: {
