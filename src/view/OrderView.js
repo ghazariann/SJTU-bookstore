@@ -51,7 +51,7 @@ function OrderView() {
                 setOrders(userOrders);
             })
             .catch(error => console.log(error));
-    }, []);
+    }, [user.id]);
 
     const isSearched = (item) => {
         if (!searchText) return true;

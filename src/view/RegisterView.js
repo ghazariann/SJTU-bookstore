@@ -1,6 +1,5 @@
 import React from 'react';
 import { Form, Input, Button, notification } from 'antd';
-import { useNavigate } from 'react-router';
 
 class RegisterView extends React.Component {
   state = {

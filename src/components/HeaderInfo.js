@@ -8,8 +8,7 @@ import { UserContext } from '../UserContext';
 import { useContext } from "react";
 
 function HeaderInfo() {
-  // const user = JSON.parse(localStorage.getItem("user"));
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   return (
     <div id="header">

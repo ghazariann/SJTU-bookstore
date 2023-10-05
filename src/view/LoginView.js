@@ -18,4 +18,4 @@ function LoginView() {
     );
 }
 
-export default WrappedLoginForm;
+export default LoginView;

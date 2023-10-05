@@ -1,6 +1,5 @@
 import React from 'react';
-import { Table, Input, Button, DatePicker } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
+import { Table, Input, DatePicker } from 'antd';
 import moment from 'moment';
 
 class OrderListView extends React.Component {

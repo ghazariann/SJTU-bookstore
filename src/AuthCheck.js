@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from './UserContext';
-import React, { useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 
 export default function AuthCheck({ children }) {

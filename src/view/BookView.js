@@ -13,7 +13,7 @@ function BookView() {
     const [book, setBook] = useState(null);
     const navigate = useNavigate();
     const [quantity, setQuantity] = useState(1);
-    const { user, setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
    
     const handleAddToCart = async () => {
        
