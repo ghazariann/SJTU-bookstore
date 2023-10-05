@@ -30,8 +30,8 @@ const LoginForm = (props) => {
               console.log("WebSocket connection closed:", event);
           };
           ws.onerror = function(event) {
-            console.error("WebSocket Error:", event);
-        };
+    console.error("WebSocket Error:", event);
+};
           return ws;
       };
       

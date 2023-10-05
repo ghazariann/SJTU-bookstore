@@ -1,12 +1,12 @@
 import React from 'react';
 import {Layout} from 'antd'
-import HeaderInfo from "../components/HeaderInfo";
-import WrappedSideBar from "../components/SideBar";
+import HeaderInfo from "./HeaderInfo";
+import WrappedSideBar from "./SideBar";
 import 'antd/dist/antd.css';
 
 const { Header} = Layout;
 
-function LayoutView() {
+function MainLayout() {
     
     // render(){
         return(
@@ -22,4 +22,4 @@ function LayoutView() {
     }
 // }
 
-export default LayoutView;
+export default MainLayout;

@@ -3,7 +3,7 @@ import { Form, Input, Button, message } from 'antd';
 import { UserContext } from '../UserContext';
 import '../css/addBook.css';
 
-const AddBookView = () => {
+function AddBookView() {
     const { user } = useContext(UserContext);
     
     const [formValues, setFormValues] = useState({

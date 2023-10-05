@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { List , Input} from 'antd';
-import { Book } from './Book';
+import Book from './Book';
 
 export function BookList() {
     const [books, setBooks] = useState([]);
@@ -40,3 +40,4 @@ export function BookList() {
         </div>
     );
 }
+export default BookList;

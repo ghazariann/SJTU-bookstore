@@ -11,7 +11,7 @@ const { Content } = Layout;
 
 function CartView() {
     const navigate = useNavigate();
-    const { user, setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
     const [selectedCartItems, setSelectedCartItems] = useState([]);
 
     const columns = [
@@ -121,7 +121,6 @@ function CartView() {
             message.error('Failed to place the order');
         }
     };
-    // console.log(user.id)
     useEffect(() => {
     
         fetch('http://localhost:8080/cartItems')

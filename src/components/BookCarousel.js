@@ -1,32 +1,19 @@
 import React from 'react';
 import { Carousel } from 'antd';
 
-export class BookCarousel extends React.Component{
-
-    createContent = (ctx) => {
+function BookCarousel() {
+    const createContent = (ctx) => {
         const images = ctx.keys().map(ctx);
-        // console.log(images);
-        let result = [];
-        for (let i = 0; i < ctx.keys().length; i++) {
-            let img = images[i];
-            // console.log(img);
-            result.push(<div><img alt={i} src={img}/></div>);
-        }
-        return result;
+        return images.map((img, i) => <div key={i}><img alt={i.toString()} src={img} /></div>);
     };
 
+    const requireContext = require.context("../assets/carousel", true, /^\.\/.*\.jpg$/);
 
-    render(){
-        const requireContext = require.context("../assets/carousel", true, /^\.\/.*\.jpg$/);
-
-
-
-        return (
-            <Carousel autoplay>
-                {this.createContent(requireContext)}
-            </Carousel>
-        )
-    }
+    return (
+        <Carousel autoplay>
+            {createContent(requireContext)}
+        </Carousel>
+    );
 }
 
-
+export default BookCarousel;
