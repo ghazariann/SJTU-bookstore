@@ -5,6 +5,7 @@ export const UserContext = React.createContext();
 export class UserProvider extends React.Component {
     state = {
         user: JSON.parse(localStorage.getItem("user")) || null,
+        ws: null,
     };
 
     setUser = (user) => {
@@ -12,10 +13,14 @@ export class UserProvider extends React.Component {
         this.setState({ user });
     }
 
+    setWs = (ws) => { 
+        this.setState({ ws });
+    }
+
     render() {
-        const { user } = this.state;
+        const { user, ws } = this.state;
         return (
-            <UserContext.Provider value={{ user, setUser: this.setUser }}>
+            <UserContext.Provider value={{ user, setUser: this.setUser, ws, setWs: this.setWs }}>
                 {this.props.children}
             </UserContext.Provider>
         );

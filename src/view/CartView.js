@@ -2,12 +2,10 @@ import React from 'react';
 import { Layout, Table, Button, message, Checkbox  } from 'antd'
 import 'antd/dist/antd.css';
 import '../css/main.css'
-import { SearchBar } from "../components/SearchBar";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from '../UserContext';
 import { useNavigate } from 'react-router';
-import { Client } from '@stomp/stompjs';
-import SockJS from 'sockjs-client';
+
 
 const { Content } = Layout;
 
@@ -72,31 +70,7 @@ function CartView() {
             setSelectedCartItems(prev => prev.filter(cartItem => cartItem.id !== record.id));
         }
     };
-    useEffect(() => {
-        // Initialize WebSocket connection via SockJS and STOMP
-        const socket = new SockJS('http://localhost:8080/websocket-endpoint');
-        const stompClient = new Client({
-          webSocketFactory: () => socket,
-        });
-      
-        // Connection and subscriptions
-        stompClient.onConnect = (frame) => {
-          stompClient.subscribe('/topic/orders', (mgs) => {
-            const receivedOrderId = JSON.parse(mgs.body).id;
-            message.success(`Order with id ${receivedOrderId} has been processed!`, 2);
-            // console.log('Received:',  receivedOrderId);
-            
-          });
-        //   console.log(`Connected: ${frame}`);
-        };
-      
-        stompClient.activate();
-      
-        // Clean up function to close WebSocket connection
-        return () => {
-          stompClient.deactivate();
-        };
-      }, []);
+    
     const handleOrder = async () => {
         // Prepare the order
         // console.log(selectedCartItems)

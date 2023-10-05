@@ -3,7 +3,7 @@ import { Row, Col } from 'antd';
 import '../css/index.css'
 import logo from '../assets/logo.svg';
 import logoFont from '../assets/logo-name.svg';
-import {UserAvatar} from "./UserAvatar";
+import UserAvatar from "./UserAvatar";
 import { UserContext } from '../UserContext';
 import { useContext } from "react";
 
