@@ -5,10 +5,11 @@ import com.bookstore.bookstore_backend.service.OrderService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
+// import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
 import com.bookstore.bookstore_backend.entity.Order;
 import com.bookstore.bookstore_backend.utils.AppConstants;
+import com.bookstore.bookstore_backend.websocket.WebSocketServer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.AllArgsConstructor;
@@ -21,12 +22,17 @@ public class KafkaConsumer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumer.class);
 
-    private OrderService orderService;
-    private KafkaProducer kafkaProducer;
     @Autowired
-    private SimpMessagingTemplate template;
+    private OrderService orderService;
+    @Autowired
+    private KafkaProducer kafkaProducer;
+    // @Autowired
+    // private SimpMessagingTemplate template;
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Autowired
+    private WebSocketServer ws;
 
     @KafkaListener(topics = AppConstants.ORDER_TOPIC, groupId = AppConstants.ORDER_GROUP)
     public void listenOrderTopic(Order order) {
@@ -39,11 +45,10 @@ public class KafkaConsumer {
 
     @KafkaListener(topics = AppConstants.ORDER_RESULTS_TOPIC, groupId = AppConstants.ORDER_GROUP)
     public void listenOrderResultTopic(Order order) {
-        template.convertAndSend("/topic/orders", "Order with idProcessed--> %s" +
-                order.toString());
         try {
             String orderJson = objectMapper.writeValueAsString(order);
-            template.convertAndSend("/topic/orders", orderJson);
+            // template.convertAndSend("/topic/orders", orderJson);
+            ws.sendMessageToUser(order.getUser().getId().toString(), "Order Processed--> " + order.getId());
         } catch (Exception e) {
             e.printStackTrace();
         }

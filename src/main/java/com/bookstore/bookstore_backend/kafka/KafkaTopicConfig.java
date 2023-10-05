@@ -1,4 +1,4 @@
-package com.bookstore.bookstore_backend.config;
+package com.bookstore.bookstore_backend.kafka;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;

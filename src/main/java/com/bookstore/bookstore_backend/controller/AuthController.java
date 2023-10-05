@@ -4,7 +4,11 @@ import com.bookstore.bookstore_backend.entity.User;
 import com.bookstore.bookstore_backend.entity.UserAuth;
 import com.bookstore.bookstore_backend.service.TimerService;
 import com.bookstore.bookstore_backend.service.UserService;
+import com.bookstore.bookstore_backend.websocket.WebSocketServer;
+
 import lombok.AllArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +24,7 @@ import jakarta.servlet.http.HttpSession;
 public class AuthController {
     private UserService userService;
     private TimerService timerService;
+    private WebSocketServer webSocketServer;
 
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody UserAuth credentials, HttpSession session) {
