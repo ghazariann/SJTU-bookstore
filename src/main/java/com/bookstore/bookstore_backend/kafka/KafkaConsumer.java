@@ -5,12 +5,10 @@ import com.bookstore.bookstore_backend.service.OrderService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
-// import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
 import com.bookstore.bookstore_backend.entity.Order;
 import com.bookstore.bookstore_backend.utils.AppConstants;
 import com.bookstore.bookstore_backend.websocket.WebSocketServer;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.AllArgsConstructor;
 
@@ -21,18 +19,12 @@ import org.slf4j.Logger;
 public class KafkaConsumer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(KafkaConsumer.class);
-
+    @Autowired
+    private WebSocketServer ws;
     @Autowired
     private OrderService orderService;
     @Autowired
     private KafkaProducer kafkaProducer;
-    // @Autowired
-    // private SimpMessagingTemplate template;
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    @Autowired
-    private WebSocketServer ws;
 
     @KafkaListener(topics = AppConstants.ORDER_TOPIC, groupId = AppConstants.ORDER_GROUP)
     public void listenOrderTopic(Order order) {
@@ -46,14 +38,10 @@ public class KafkaConsumer {
     @KafkaListener(topics = AppConstants.ORDER_RESULTS_TOPIC, groupId = AppConstants.ORDER_GROUP)
     public void listenOrderResultTopic(Order order) {
         try {
-            String orderJson = objectMapper.writeValueAsString(order);
-            // template.convertAndSend("/topic/orders", orderJson);
+            // String orderJson = objectMapper.writeValueAsString(order);
             ws.sendMessageToUser(order.getUser().getId().toString(), "Order Processed--> " + order.getId());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // LOGGER.info(String.format("\u001B[31m" + "Order Processed--> %s",
-        // order.toString() + "\u001B[0m"));
-
     }
 }

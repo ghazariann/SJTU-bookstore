@@ -1,6 +1,5 @@
 package com.bookstore.bookstore_backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,8 +14,8 @@ import lombok.Setter;
 @Table(name = "Cart_items")
 
 public class CartItem {
-    
-    @Id
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
@@ -26,7 +25,7 @@ public class CartItem {
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
-//	@JsonIgnore  // Ignore this field when converting to JSON
+	// @JsonIgnore // Ignore this field when converting to JSON
 	private User user;
 
 	@Column()

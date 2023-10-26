@@ -17,15 +17,14 @@
         <java.version>17</java.version>
     </properties>
     <dependencies>
-        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-<dependency>
-  <groupId>org.springframework.kafka</groupId>
-  <artifactId>spring-kafka</artifactId>
-</dependency>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -35,10 +34,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>    
-        <groupId>org.apache.kafka</groupId> 
-           <artifactId>kafka-clients</artifactId> 
+            <groupId>org.apache.kafka</groupId> 
+            <artifactId>kafka-clients</artifactId> 
              <version>3.5.1</version>
-            </dependency> 
+        </dependency> 
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
@@ -55,16 +54,37 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-websocket</artifactId>
-    </dependency>
-    <dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-databind</artifactId>
-    <version>2.12.3</version> <!-- use the latest version -->
-</dependency>
-    </dependencies>
-
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.12.3</version> <!-- Make sure to include the version -->
+        </dependency>
+        <dependency>
+            <groupId>jakarta.websocket</groupId>
+            <artifactId>jakarta.websocket-api</artifactId>
+            <version>1.1.2</version> <!-- Use the appropriate version -->
+        </dependency>
+        <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.78</version> 
+        </dependency>
+</dependencies>
 
     <build>
         <plugins>

@@ -1,7 +1,5 @@
 package com.bookstore.bookstore_backend.entity;
 
-//import com.bookstore.bookstore_backend.entity.OrderItem;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
