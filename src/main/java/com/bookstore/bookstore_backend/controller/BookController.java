@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.Map;
 import java.util.List;
 
 @RestController
@@ -46,5 +46,11 @@ public class BookController {
     public ResponseEntity<?> deleteBook(@PathVariable("id") long id) {
         bookService.deleteBook(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @PutMapping("/filterByTag")
+    public ResponseEntity<List<Book>> filterByTag(@RequestBody Map<String, String> tagData) {
+        String tag = tagData.get("tag");
+        List<Book> books = bookService.findBooksByTag(tag);
+        return ResponseEntity.ok(books);
     }
 }

@@ -8,4 +8,5 @@ public interface BookDao {
     Book findById(long id);
     List<Book> findAll();
     void deleteById(long id);
+    List<Book> findByTag(String tag);
 }

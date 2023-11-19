@@ -14,4 +14,6 @@ public interface BookService {
     Book updateBook(Book order); // PUT
 
     void deleteBook(long id); // DELETE
+
+    List<Book> findBooksByTag(String tagName);
 }

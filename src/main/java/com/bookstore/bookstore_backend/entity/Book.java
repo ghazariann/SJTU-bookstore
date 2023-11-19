@@ -36,8 +36,12 @@ public class Book {
 	@Column(name = "inventory")
 	private float inventory;
 
-	@Column(name = "image")
-	private String image;
+	@Column(name = "tags")
+    private String tags;
+	// @Column(name = "image")
+	// private String image;
+	@Transient
+    private BookCoverImage coverImage;
 
 	@Override
 	public String toString() {

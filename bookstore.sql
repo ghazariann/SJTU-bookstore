@@ -7,14 +7,25 @@ CREATE TABLE `books` (
     `price` DECIMAL(10, 2) default null,
     `description` VARCHAR(2000) default null,
     `inventory` INT(11) default null,
-    `image` VARCHAR(255) default null
+    `tags` VARCHAR(255) default null,
+    -- `image` VARCHAR(255) default null
 );
-INSERT INTO `books` VALUES ('1',  'The Great Gatsby', 'Fiction', 'F. Scott Fitzgerald', '95.20', 'A novel about the decadence and excess of the Jazz Age', '1000', 'https://m.media-amazon.com/images/I/71jaj8WPG4L._AC_UF1000,1000_QL80_.jpg');
-INSERT INTO `books` VALUES ('2',  '1984', 'Dystopian', 'George Orwell', '120.50', 'A dystopian novel about a society under total surveillance', '900', 'https://m.media-amazon.com/images/I/519zR2oIlmL._AC_UF894,1000_QL80_.jpg');
-INSERT INTO `books` VALUES ('3',  'To Kill a Mockingbird', 'Fiction', 'Harper Lee', '85.75', 'A classic novel of racism and injustice', '1200', 'https://m.media-amazon.com/images/I/71FxgtFKcQL._AC_UF1000,1000_QL80_.jpg');
-INSERT INTO `books` VALUES ('4',  'Moby-Dick', 'Adventure', 'Herman Melville', '110.00', 'An epic sea story of Captain Ahab’s obsessive quest to hunt down the great white whale Moby Dick', '700', 'https://m.media-amazon.com/images/I/81R91ODA9DL._AC_UF1000,1000_QL80_.jpg');
-INSERT INTO `books` VALUES ('5', 'Pride and Prejudice', 'Romance', 'Jane Austen', '80.25', 'A romantic novel about manners, upbringing, morality, education, and marriage in the society of the British landed gentry', '1300', 'https://images.penguinrandomhouse.com/cover/9780451530783');
+--TODO  remove img, add tags
+-- Original books with updated tags
+INSERT INTO `books` VALUES ('1', 'The Great Gatsby', 'Fiction', 'F. Scott Fitzgerald', '95.20', 'A novel about the decadence and excess of the Jazz Age', '1000', 'Adventure;Romance');
+INSERT INTO `books` VALUES ('2', '1984', 'Dystopian', 'George Orwell', '120.50', 'A dystopian novel about a society under total surveillance', '900', 'Dystopian');
+INSERT INTO `books` VALUES ('3', 'To Kill a Mockingbird', 'Fiction', 'Harper Lee', '85.75', 'A classic novel of racism and injustice', '1200',  'Adventure;Romance');
+INSERT INTO `books` VALUES ('4', 'Moby-Dick', 'Adventure', 'Herman Melville', '110.00', 'An epic sea story of Captain Ahab’s obsessive quest to hunt down the great white whale Moby Dick', '700',  'Adventure');
 
+-- Additional books to cover all subgenres
+INSERT INTO `books` VALUES ('5', 'The Diary of Anne Frank', 'Non-Fiction', 'Anne Frank', '100.00', 'The writings from the Dutch language diary kept by Anne Frank while she was in hiding during World War II', '1200',  'Historical;Biography');
+INSERT INTO `books` VALUES ('6', 'The Da Vinci Code', 'Mystery', 'Dan Brown', '150.00', 'A mystery thriller novel that follows a symbologist and a cryptologist who discover a conspiracy in the works of Leonardo da Vinci', '800', 'Crime;Thriller');
+INSERT INTO `books` VALUES ('7', 'A Brief History of Time', 'Non-Fiction', 'Stephen Hawking', '130.00', 'A landmark volume in science writing by one of the great minds of our time', '1100', 'Science');
+INSERT INTO `books` VALUES ('8', 'Gone Girl', 'Mystery', 'Gillian Flynn', '125.00', 'A thriller novel about a woman who mysteriously disappears on her wedding anniversary', '850', 'Crime;Thriller');
+INSERT INTO `books` VALUES ('9', 'Pride and Prejudice', 'Romance', 'Jane Austen', '80.25', 'A romantic novel about manners, upbringing, morality, education, and marriage in the society of the British landed gentry', '1300', 'Romance');
+INSERT INTO `books` VALUES ('10', 'The Martian', 'Fiction', 'Andy Weir', '115.00', 'A science fiction novel about an astronaut stranded on Mars, struggling to survive', '700', 'Adventure;Science');
+INSERT INTO `books` VALUES ('11', 'Sapiens: A Brief History of Humankind', 'Non-Fiction', 'Yuval Noah Harari', '140.00', 'An exploration of the history and impact of Homo sapiens on the planet', '1300',  'Historical;Science');
+INSERT INTO `books` VALUES ('12', 'The Adventures of Sherlock Holmes', 'Mystery', 'Arthur Conan Doyle', '90.00', 'A collection of stories featuring the famous detective Sherlock Holmes', '950', 'Crime');
 
 CREATE TABLE users (
 	`id` int(11) PRIMARY KEY AUTO_INCREMENT,
