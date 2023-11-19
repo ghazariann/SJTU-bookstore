@@ -24,7 +24,7 @@ function OrderView() {
         },
         {
             title: 'Cover',
-            dataIndex: ['book', 'image'],
+            dataIndex: ['book', 'coverImage'],
             key: 'cover',
             render: (img) => (
                 <img width="80" height="100" src={img} alt="Product" />

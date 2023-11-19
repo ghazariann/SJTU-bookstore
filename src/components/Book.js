@@ -13,7 +13,7 @@ function Book({ info }) {
             <Card
                 hoverable
                 style={{ width: 150 }}
-                cover={<img alt="image" src={info.image} className="bookImg" />}
+                cover={<img alt="image" src={info.coverImage.image} className="bookImg" />}
             >
                 <Meta title={info.name} description={'¥' + info.price} />
             </Card>

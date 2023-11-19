@@ -65,7 +65,8 @@ function BookView() {
                                 dataSource={[
                                     {
                                         title: '',
-                                        content: <img alt="book cover" src={book.image} style={{ width: '100%' }} />,
+                                        // content: <img alt="book cover" src={book.image} style={{ width: '100%' }} />,
+                                        content: <img alt="book cover" src={book.coverImage.image} style={{ width: '100%' }} />,
                                     },
                                     {
                                         title: 'Name',

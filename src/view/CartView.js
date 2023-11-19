@@ -87,7 +87,7 @@ function CartView() {
                 id: user.id,
             },
             orderDate: new Date().toISOString().split('T')[0], 
-            totalPrice: orderItems.reduce((total, item) => total + (item.price ), 0), // * item.quantity
+            totalPrice: 0,// orderItems.reduce((total, item) => total + (item.price ), 0), // * item.quantity
             shippingAddress: user.address,  
             orderItems,
         };
