@@ -9,4 +9,5 @@ public interface BookDao {
     List<Book> findAll();
     void deleteById(long id);
     List<Book> findByTag(String tag);
+    List<Book> searchBooksByName(String name);
 }

@@ -3,6 +3,9 @@ package com.bookstore.bookstore_backend.controller;
 import com.bookstore.bookstore_backend.entity.Book;
 import com.bookstore.bookstore_backend.service.BookService;
 import lombok.AllArgsConstructor;
+
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -52,5 +55,9 @@ public class BookController {
         String tag = tagData.get("tag");
         List<Book> books = bookService.findBooksByTag(tag);
         return ResponseEntity.ok(books);
+    }
+    @QueryMapping
+    public List<Book> searchBooksByName(@Argument String name) {
+        return bookService.searchBooksByName(name);
     }
 }

@@ -4,7 +4,7 @@ import com.bookstore.bookstore_backend.entity.Order;
 import com.bookstore.bookstore_backend.service.OrderService;
 
 import lombok.AllArgsConstructor;
-import com.bookstore.bookstore_backend.kafka.KafkaProducer;
+// import com.bookstore.bookstore_backend.kafka.KafkaProducer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,12 +17,14 @@ import java.util.List;
 public class OrderController {
 
     private OrderService orderService;
-    private KafkaProducer kafkaProducer;
+    // private KafkaProducer kafkaProducer;
 
     @PostMapping
-    public ResponseEntity<String> createOrder(@RequestBody Order order) {
-        kafkaProducer.sendOrder(order); // Send order to kafka topic
-        return new ResponseEntity<>("Order sent for processing", HttpStatus.CREATED);
+    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
+        Order newOrder = orderService.addOrder(order);
+        return new ResponseEntity<>(newOrder, HttpStatus.CREATED);
+        // kafkaProducer.sendOrder(order); // Send order to kafka topic
+        // return new ResponseEntity<>("Order sent for processing", HttpStatus.CREATED);
         // todo ResponseEntity.ok("Message sent to kafka topic");
     }
 

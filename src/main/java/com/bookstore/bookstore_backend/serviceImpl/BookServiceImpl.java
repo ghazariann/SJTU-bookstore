@@ -91,4 +91,8 @@ public class BookServiceImpl implements BookService {
     // Convert the Set back to a List
     return new ArrayList<>(uniqueBooks);
 }
+
+public List<Book> searchBooksByName(String name){
+    return bookDao.searchBooksByName(name);
+}
 }

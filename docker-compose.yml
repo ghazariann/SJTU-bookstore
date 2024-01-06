@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    image: spring-boot-app
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/mybookstore?useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: vahagn2002ghaz
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
+      SPRING_JPA_SHOW_SQL: "true"
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL5Dialect
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/bookstore
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: vahagn2002ghaz
+      MYSQL_DATABASE: mybookstore
+    ports:
+      - "3307:3306"
+    volumes:
+      - D:/edu/SJTU/2-2/web/bookstore/data:/var/lib/mysql
+      - D:/edu/SJTU/2-2/web/bookstore/backend/bookstore.sql:/docker-entrypoint-initdb.d/bookstore.sql
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27018:27017"
+    volumes:
+      - D:/edu/SJTU/2-2/web/bookstore/mongodb-data:/data/db

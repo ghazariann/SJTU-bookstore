@@ -33,10 +33,6 @@ public class BookDaoImpl implements BookDao {
     @Override
     public Book save(Book book) {
         Book savedBook = bookRepository.save(book);
-        if (redisStatusService.isRedisAvailable()) {
-            redisTemplate.opsForValue().set("book" + savedBook.getId(), JSON.toJSONString(savedBook));
-            redisTemplate.delete("bookList"); // booklist is changed, delete cache
-        }
         return savedBook;
     }
 
@@ -121,5 +117,9 @@ public List<Book> findAll() {
         List<Book> books = bookRepository.findByTagPattern(tag);
         books.forEach(book -> book.setCoverImage(fetchCoverImage(book.getId())));
         return books;
+    }
+    @Override
+    public List<Book> searchBooksByName(String name) {
+       return bookRepository.findByNameContainingIgnoreCase(name);
     }
 }

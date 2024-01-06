@@ -19,3 +19,12 @@ public class BookstoreBackendApplication {
     }
 
 }
+
+// @SpringBootApplication
+// public class BookstoreBackendApplication {
+
+//     public static void main(String[] args) {
+//         SpringApplication.run(BookstoreBackendApplication.class, args);
+//     }
+
+// }
