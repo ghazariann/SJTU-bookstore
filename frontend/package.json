@@ -1,0 +1,50 @@
+{
+  "name": "bookstore",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@ant-design/icons": "latest",
+    "@stomp/stompjs": "^7.0.0",
+    "antd": "^3.24.3",
+    "axios": "^1.5.0",
+    "graphql": "^16.8.1",
+    "mutationobserver-shim": "^0.3.7",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-app-rewired": "^2.1.5",
+    "react-dom": "^18.2.0",
+    "react-highlight-words": "^0.20.0",
+    "react-redux": "^7.1.1",
+    "react-router": "^6.9.0",
+    "react-router-dom": "^6.9.0",
+    "react-scripts": "5.0.1",
+    "redux": "^4.0.4",
+    "urql": "^4.0.6",
+    "web-vitals": "^2.1.4",
+    "websocket": "^1.0.34"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
