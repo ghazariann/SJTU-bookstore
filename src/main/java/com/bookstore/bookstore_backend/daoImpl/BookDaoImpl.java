@@ -1,6 +1,5 @@
 package com.bookstore.bookstore_backend.daoImpl;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -19,7 +18,6 @@ import com.alibaba.fastjson.TypeReference;
 import org.slf4j.Logger;
 import lombok.AllArgsConstructor;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Repository
 @AllArgsConstructor
@@ -30,6 +28,7 @@ public class BookDaoImpl implements BookDao {
     private final RedisTemplate<String, String> redisTemplate;
     private static final Logger logger = LoggerFactory.getLogger(BookDaoImpl.class);
     private final BookCoverImageRepository bookCoverImageRepository;
+
     @Override
     public Book save(Book book) {
         Book savedBook = bookRepository.save(book);
@@ -56,7 +55,7 @@ public class BookDaoImpl implements BookDao {
         endTime = System.currentTimeMillis();
         logger.info("Time taken for findById operation without Redis: {} ms", (endTime - startTime));
 
-          if (book != null) {
+        if (book != null) {
             Optional<BookCoverImage> coverImage = bookCoverImageRepository.findById(id);
             coverImage.ifPresent(book::setCoverImage);
         }
@@ -69,36 +68,37 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-public List<Book> findAll() {
-    long startTime, endTime;
+    public List<Book> findAll() {
+        long startTime, endTime;
 
-    if (redisStatusService.isRedisAvailable()) {
-        startTime = System.currentTimeMillis();
-        String cachedBookList = redisTemplate.opsForValue().get("bookList");
-        endTime = System.currentTimeMillis();   
+        if (redisStatusService.isRedisAvailable()) {
+            startTime = System.currentTimeMillis();
+            String cachedBookList = redisTemplate.opsForValue().get("bookList");
+            endTime = System.currentTimeMillis();
 
-        if (cachedBookList != null) {
-            logger.info("Time taken for findAll operation with Redis: {} ms", (endTime - startTime));
-            logger.info("Listed books from Redis");
-            List<Book> books = JSON.parseObject(cachedBookList, new TypeReference<List<Book>>() {});
-            books.forEach(book -> book.setCoverImage(fetchCoverImage(book.getId()))); // TODO Cash cover image
-            return books;
+            if (cachedBookList != null) {
+                logger.info("Time taken for findAll operation with Redis: {} ms", (endTime - startTime));
+                logger.info("Listed books from Redis");
+                List<Book> books = JSON.parseObject(cachedBookList, new TypeReference<List<Book>>() {
+                });
+                books.forEach(book -> book.setCoverImage(fetchCoverImage(book.getId()))); // TODO Cash cover image
+                return books;
+            }
         }
+
+        startTime = System.currentTimeMillis();
+        List<Book> bookList = bookRepository.findAll();
+        endTime = System.currentTimeMillis();
+        logger.info("Time taken for findAll operation without Redis: {} ms", (endTime - startTime));
+
+        bookList.forEach(book -> book.setCoverImage(fetchCoverImage(book.getId())));
+
+        if (redisStatusService.isRedisAvailable()) {
+            redisTemplate.opsForValue().set("bookList", JSON.toJSONString(bookList));
+        }
+
+        return bookList;
     }
-
-    startTime = System.currentTimeMillis();
-    List<Book> bookList = bookRepository.findAll();
-    endTime = System.currentTimeMillis();
-    logger.info("Time taken for findAll operation without Redis: {} ms", (endTime - startTime));
-
-    bookList.forEach(book -> book.setCoverImage(fetchCoverImage(book.getId())));
-
-    if (redisStatusService.isRedisAvailable()) {
-        redisTemplate.opsForValue().set("bookList", JSON.toJSONString(bookList));
-    }
-
-    return bookList;
-}
 
     @Override
     public void deleteById(long id) {
@@ -108,18 +108,20 @@ public List<Book> findAll() {
             redisTemplate.delete("bookList");
         }
     }
+
     private BookCoverImage fetchCoverImage(long bookId) {
         return bookCoverImageRepository.findById(bookId).orElse(null);
     }
- 
+
     @Override
     public List<Book> findByTag(String tag) {
         List<Book> books = bookRepository.findByTagPattern(tag);
         books.forEach(book -> book.setCoverImage(fetchCoverImage(book.getId())));
         return books;
     }
+
     @Override
     public List<Book> searchBooksByName(String name) {
-       return bookRepository.findByNameContainingIgnoreCase(name);
+        return bookRepository.findByNameContainingIgnoreCase(name);
     }
 }

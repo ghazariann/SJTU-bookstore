@@ -111,7 +111,17 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-data-jpa</artifactId>
 </dependency>
-
+<dependency>
+        <groupId>org.apache.spark</groupId>
+        <artifactId>spark-core_2.12</artifactId>
+        <version>3.1.1</version> <!-- Use the version you've downloaded -->
+    </dependency>
+    <dependency>
+        <groupId>org.apache.spark</groupId>
+        <artifactId>spark-sql_2.12</artifactId>
+        <version>3.1.1</version> <!-- Use the version you've downloaded -->
+    </dependency>
+    
 </dependencies>
 <dependencyManagement>
     <dependencies>
